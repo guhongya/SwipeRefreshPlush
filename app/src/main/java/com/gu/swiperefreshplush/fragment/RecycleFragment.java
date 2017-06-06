@@ -17,7 +17,7 @@ import com.apkfuns.logutils.LogUtils;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
-import com.gu.swiperefresh.SwipeRefreshPlush;
+import com.gu.swiperefresh.SwipeRefreshPlus;
 import com.gu.swiperefreshplush.R;
 import com.gu.swiperefreshplush.SimpleRecycleAdapter;
 import com.gu.swiperefreshplush.extention.LoadMoreController;
@@ -30,7 +30,7 @@ public class RecycleFragment extends Fragment implements DemoContact.View {
     private RecyclerView recycleContent;
 
     private SimpleRecycleAdapter recycleAdapter;
-    private SwipeRefreshPlush swipeRefreshPlush;
+    private SwipeRefreshPlus swipeRefreshPlush;
     private List<Integer> datas;
     int count=0;
     int page=2;
@@ -42,7 +42,7 @@ public class RecycleFragment extends Fragment implements DemoContact.View {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_recycle, container, false);
         recycleContent= (RecyclerView) view.findViewById(R.id.recycle_content);
-        swipeRefreshPlush= (SwipeRefreshPlush) view.findViewById(R.id.swipe_refresh);
+        swipeRefreshPlush= (SwipeRefreshPlus) view.findViewById(R.id.swipe_refresh);
         swipeRefreshPlush.setLoadViewController(new LoadMoreController(container.getContext(),swipeRefreshPlush));
         new DataPresenter(this);
         setHasOptionsMenu(true);
@@ -59,7 +59,7 @@ public class RecycleFragment extends Fragment implements DemoContact.View {
         recycleAdapter.setData(datas);
         recycleContent.setAdapter(recycleAdapter);
         swipeRefreshPlush.setRefreshColorResources(new int[]{R.color.colorPrimary});
-        swipeRefreshPlush.setOnRefreshListener(new SwipeRefreshPlush.OnRefreshListener() {
+        swipeRefreshPlush.setOnRefreshListener(new SwipeRefreshPlus.OnRefreshListener() {
             @Override
             public void onPullDownToRefresh() {
                 swipeRefreshPlush.postDelayed(new Runnable() {
